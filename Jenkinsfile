@@ -16,7 +16,7 @@ pipeline {
             steps {
                 sh 'export TG_BOT_TOKEN=$TG_BOT_TOKEN' 
                 sh 'docker-compose build'
-                sh 'docker tag $DOCKER_IMAGE:latest $DOCKER_IMAG:$BUILD_NUMBER'
+                sh 'docker tag $DOCKER_IMAGE:latest $DOCKER_IMAGE:$BUILD_NUMBER'
             }
             post {
                 failure {
