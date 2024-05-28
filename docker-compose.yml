@@ -11,3 +11,8 @@ services:
     container_name: stats_holiday_bot
     environment:
       TG_BOT_TOKEN: $TG_BOT_TOKEN
+    networks:
+      - back-tier
+
+networks:
+  back-tier:

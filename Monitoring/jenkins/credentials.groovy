@@ -15,14 +15,9 @@ def dockerUserName = getEnvVariable('DOCKERHUB_USERNAME')
 def dockerPassword = getEnvVariable('DOCKERHUB_PASSWORD')
 
 def tgBotToken = getEnvVariable('TG_BOT_TOKEN')
-def openaiApiKey = getEnvVariable('OPENAI_API_KEY')
-def openWeatherToken = getEnvVariable('OPEN_WEATHER_TOKEN')
 
 def domain = Domain.global()
 def store = Jenkins.instance.getExtensionList('com.cloudbees.plugins.credentials.SystemCredentialsProvider')[0].getStore()
 
 def creds = new UsernamePasswordCredentialsImpl(CredentialsScope.GLOBAL, "dockerhub_token", "Description", dockerUserName, dockerPassword)
 store.addCredentials(domain, creds)
-
-def tgBotTokenCreds = new StringCredentialsImpl(CredentialsScope.GLOBAL, "tg_bot_token", "TG Bot Token", Secret.fromString(tgBotToken))
-store.addCredentials(domain, tgBotTokenCreds)
