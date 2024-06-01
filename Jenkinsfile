@@ -2,8 +2,7 @@ pipeline {
     agent any
     environment {
         DOCKER_IMAGE = 'pavlomalhin/stats_holiday'
-        TG_BOT_TOKEN =  credentials('tg_bot_token')
-
+        //TG_BOT_TOKEN =  credentials('tg_bot_token')
     }
     stages {
         stage('Start') {
@@ -14,7 +13,7 @@ pipeline {
 
         stage('Build nginx/custom') {
             steps {
-                sh 'export TG_BOT_TOKEN=$TG_BOT_TOKEN' 
+                //sh 'export TG_BOT_TOKEN=$TG_BOT_TOKEN' 
                 sh 'docker-compose build'
                 sh 'docker tag $DOCKER_IMAGE:latest $DOCKER_IMAGE:$BUILD_NUMBER'
             }
@@ -45,7 +44,7 @@ pipeline {
                 sh "docker-compose down"
                 sh "docker container prune --force"
                 sh "docker image prune --force"
-                sh "docker-compose up -d --build"
+                sh "docker-compose up -d"
             }
             post {
                 failure {

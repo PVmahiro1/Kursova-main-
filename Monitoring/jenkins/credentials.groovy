@@ -14,8 +14,6 @@ def getEnvVariable(String name) {
 def dockerUserName = getEnvVariable('DOCKERHUB_USERNAME')
 def dockerPassword = getEnvVariable('DOCKERHUB_PASSWORD')
 
-def tgBotToken = getEnvVariable('TG_BOT_TOKEN')
-
 def domain = Domain.global()
 def store = Jenkins.instance.getExtensionList('com.cloudbees.plugins.credentials.SystemCredentialsProvider')[0].getStore()
 
